@@ -159,6 +159,368 @@ curl -X GET -H "Authorization: Bearer $TOKEN$"
 
 `GET http://ocean.vispera.co/api/shark/v1/auditors/me`
 
+# Assignment
+## Get All Assignments
+
+```shell
+curl -X GET -H "Authorization: Bearer $TOKEN$" "http://localhost:3000/api/shark/v1/assignments"
+```
+
+Get all assignments for logged in auditor.
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 630,
+    "name": "carrefourSA_2016_altayçeşme",
+    "description": "CarrefourSA Altayçeşme 2016",
+    "stores_todo_codes": [
+      "Carrefour001"
+    ],
+    "updated_at": "2016-11-08T12:35:13.483Z",
+    "internal_project_uuid": "5dd8134e-20e3-4899-ac4c-2b28b13203ae",
+    "device_reports": false,
+    "reference_image_sets": [
+      {
+        "id": 899,
+        "survey_id": 20,
+        "activity_category_id": 59,
+        "product_group_id": "69763366-27d5-4aab-b903-b30fb2ca8cc5",
+        "image_set_id": "3de2916e-2833-4744-b08a-7275a90f05db",
+        "store_code": "Carrefour001",
+        "display_type": "shelf",
+        "mosaic": {
+          "xxxsmall": "/uploads/image_set_report/mosaic/6392/xxxsmall_a1835f7310.jpg",
+          "xxsmall": "/uploads/image_set_report/mosaic/6392/xxsmall_a1835f7310.jpg",
+          "xsmall": "/uploads/image_set_report/mosaic/6392/xsmall_a1835f7310.jpg",
+          "small": "/uploads/image_set_report/mosaic/6392/small_a1835f7310.jpg",
+          "medium": "/uploads/image_set_report/mosaic/6392/medium_a1835f7310.jpg",
+          "large": "/uploads/image_set_report/mosaic/6392/large_a1835f7310.jpg",
+          "xlarge": "/uploads/image_set_report/mosaic/6392/xlarge_a1835f7310.jpg",
+          "xxlarge": "/uploads/image_set_report/mosaic/6392/xxlarge_a1835f7310.jpg",
+          "xxxlarge": "/uploads/image_set_report/mosaic/6392/xxxlarge_a1835f7310.jpg",
+          "original": "/uploads/image_set_report/mosaic/6392/a1835f7310.jpg"
+        },
+        "title": null,
+        "description": null
+      },
+      {
+        "id": 898,
+        "survey_id": 20,
+        "activity_category_id": 59,
+        "product_group_id": "69763366-27d5-4aab-b903-b30fb2ca8cc5",
+        "image_set_id": "3de2916e-2833-4744-b08a-7275a90f05db",
+        "store_code": "Carrefour001",
+        "display_type": "shelf",
+        "mosaic": {
+          "xxxsmall": "/uploads/image_set_report/mosaic/6392/xxxsmall_a1835f7310.jpg",
+          "xxsmall": "/uploads/image_set_report/mosaic/6392/xxsmall_a1835f7310.jpg",
+          "xsmall": "/uploads/image_set_report/mosaic/6392/xsmall_a1835f7310.jpg",
+          "small": "/uploads/image_set_report/mosaic/6392/small_a1835f7310.jpg",
+          "medium": "/uploads/image_set_report/mosaic/6392/medium_a1835f7310.jpg",
+          "large": "/uploads/image_set_report/mosaic/6392/large_a1835f7310.jpg",
+          "xlarge": "/uploads/image_set_report/mosaic/6392/xlarge_a1835f7310.jpg",
+          "xxlarge": "/uploads/image_set_report/mosaic/6392/xxlarge_a1835f7310.jpg",
+          "xxxlarge": "/uploads/image_set_report/mosaic/6392/xxxlarge_a1835f7310.jpg",
+          "original": "/uploads/image_set_report/mosaic/6392/a1835f7310.jpg"
+        },
+        "title": null,
+        "description": null
+      }
+    ],
+    "active": true,
+    "period": "always",
+    "route": {
+      "id": 595,
+      "key": "route_BNQT8Bxz",
+      "name": "carrefourSA_2016_route",
+      "title": "CarrefourSA 2016 route",
+      "updated_at": "2016-11-07T14:53:12.437Z",
+      "stores": [
+        {
+          "code": "Carrefour001",
+          "name": "CarrefourSA Altayçeşme",
+          "hint": "Carrefour001 CarrefourSA Altayçeşme İstanbul",
+          "store_type": "Market",
+          "latitude": null,
+          "longitude": null,
+          "address": " ",
+          "district": "",
+          "city": "İstanbul",
+          "state": "",
+          "country": ""
+        }
+      ]
+    },
+    "project": {
+      "id": 19,
+      "key": "project_RF+0AdMP",
+      "name": "Carrefour Altaycesme 2016",
+      "description": "CarrefourSA Altaycesme 2016",
+      "active": true
+    },
+    "survey": {
+      "id": 20,
+      "key": "survey_uFJZEbNW",
+      "name": "carrefourSA_altaycesme_2016_survey",
+      "description": "CarrefourSA Altaycesme 2016 Survey",
+      "hybrid": false,
+      "can_send_actions": false,
+      "can_send_activities": false,
+      "visit_seal_strategy": "manuel",
+      "visit_seal_interval": 0,
+      "start_time": "2016-10-12T09:00:00.000Z",
+      "end_time": "2018-10-17T09:00:00.000Z",
+      "activity_categories": [
+        {
+          "id": 59,
+          "key": "shpyalco",
+          "name": "CarrefourSA_Altaycesme_2016_shelf",
+          "title": "Raf",
+          "place": "list",
+          "action_type": "image",
+          "image_set_type": "shelf",
+          "questionnaire": null,
+          "position": 1,
+          "visible": true,
+          "min_action_count": 0,
+          "max_action_count": 99,
+          "min_activity_count": 0,
+          "max_activity_count": 99,
+          "max_image_set_count": 99,
+          "product_groups": [
+            {
+              "id": "69763366-27d5-4aab-b903-b30fb2ca8cc5",
+              "name": "carrefoursa_2016_food",
+              "title": "Yiyecek"
+            }
+          ]
+        },
+        {
+          "id": 61,
+          "key": "fthixlbw",
+          "name": "CarrefourSA_Altaycesme_2016_cooler",
+          "title": "Soğutucu",
+          "place": "list",
+          "action_type": "image",
+          "image_set_type": "cooler",
+          "questionnaire": null,
+          "position": 3,
+          "visible": true,
+          "min_action_count": 0,
+          "max_action_count": 99,
+          "min_activity_count": 0,
+          "max_activity_count": 99,
+          "max_image_set_count": 99,
+          "product_groups": [
+            {
+              "id": "69763366-27d5-4aab-b903-b30fb2ca8cc5",
+              "name": "carrefoursa_2016_food",
+              "title": "Yiyecek"
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "key": "kloqgjtz",
+          "name": "CarrefourSA_Altaycesme_2016_display",
+          "title": "Teşhir",
+          "place": "list",
+          "action_type": "image",
+          "image_set_type": "display",
+          "questionnaire": null,
+          "position": 2,
+          "visible": true,
+          "min_action_count": 0,
+          "max_action_count": 99,
+          "min_activity_count": 0,
+          "max_activity_count": 99,
+          "max_image_set_count": 99,
+          "product_groups": [
+            {
+              "id": "69763366-27d5-4aab-b903-b30fb2ca8cc5",
+              "name": "carrefoursa_2016_food",
+              "title": "Yiyecek"
+            }
+          ]
+        }
+      ],
+      "can_device_receive_reports": false,
+      "project_id": 19,
+      "internal_project_uuid": "5dd8134e-20e3-4899-ac4c-2b28b13203ae",
+      "can_select_reference_image_set": true,
+      "active": true,
+      "action_categories": [
+        {
+          "id": 59,
+          "key": "shpyalco",
+          "name": "CarrefourSA_Altaycesme_2016_shelf",
+          "title": "Raf",
+          "place": "list",
+          "action_type": "image",
+          "image_set_type": "shelf",
+          "questionnaire": null,
+          "position": 1,
+          "visible": true,
+          "min_action_count": 0,
+          "max_action_count": 99,
+          "min_activity_count": 0,
+          "max_activity_count": 99,
+          "max_image_set_count": 99,
+          "product_groups": [
+            {
+              "id": "69763366-27d5-4aab-b903-b30fb2ca8cc5",
+              "name": "carrefoursa_2016_food",
+              "title": "Yiyecek"
+            }
+          ]
+        },
+        {
+          "id": 61,
+          "key": "fthixlbw",
+          "name": "CarrefourSA_Altaycesme_2016_cooler",
+          "title": "Soğutucu",
+          "place": "list",
+          "action_type": "image",
+          "image_set_type": "cooler",
+          "questionnaire": null,
+          "position": 3,
+          "visible": true,
+          "min_action_count": 0,
+          "max_action_count": 99,
+          "min_activity_count": 0,
+          "max_activity_count": 99,
+          "max_image_set_count": 99,
+          "product_groups": [
+            {
+              "id": "69763366-27d5-4aab-b903-b30fb2ca8cc5",
+              "name": "carrefoursa_2016_food",
+              "title": "Yiyecek"
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "key": "kloqgjtz",
+          "name": "CarrefourSA_Altaycesme_2016_display",
+          "title": "Teşhir",
+          "place": "list",
+          "action_type": "image",
+          "image_set_type": "display",
+          "questionnaire": null,
+          "position": 2,
+          "visible": true,
+          "min_action_count": 0,
+          "max_action_count": 99,
+          "min_activity_count": 0,
+          "max_activity_count": 99,
+          "max_image_set_count": 99,
+          "product_groups": [
+            {
+              "id": "69763366-27d5-4aab-b903-b30fb2ca8cc5",
+              "name": "carrefoursa_2016_food",
+              "title": "Yiyecek"
+            }
+          ]
+        }
+      ],
+      "rules": []
+    }
+  }
+]
+```
+
+### HTTP Request
+
+`GET http://ocean.vispera.co/api/shark/v1/assignments`
+
+## Get Specific Assignment
+
+Get a specific assignment with ID.
+
+```shell
+curl -X GET -H "Authorization: Bearer $TOKEN$" 
+"http://localhost:3000/api/shark/v1/assignments/$ID$/stores/todo"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "code": "Carrefour001",
+    "name": "CarrefourSA Altayçeşme",
+    "hint": "Carrefour001 CarrefourSA Altayçeşme İstanbul",
+    "store_type": "Market",
+    "latitude": null,
+    "longitude": null,
+    "address": " ",
+    "district": "",
+    "city": "İstanbul",
+    "state": "",
+    "country": ""
+  }
+]
+```
+
+### HTTP Request
+
+`GET http://ocean.vispera.co/api/shark/v1/assignments/$ID$/stores/todo`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the assignment to retrieve
+
+# Data
+## Get Data
+
+```shell
+curl -X GET -H "Authorization: Bearer $TOKEN$" "http://localhost:3000/api/shark/v1/data/version"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "latest_update_at": "2016-11-08T12:35:13.483Z",
+  "resource_key": "assignments/630-20161108123513483653000",
+  "min_version_code": null
+}
+```
+
+### HTTP Request
+
+`GET http://localhost:3000/api/shark/v1/data/version`
+
+## Post Data
+
+```shell
+curl --KEMAL
+```
+
+> The above command returns JSON structured like this:
+
+```json
+"KEMAL": {
+    "Buralara": {"neler", "gelicek", undefined}
+}
+```
+
+### HTTP Request
+
+`POST http://localhost:3000/api/shark/v1/data/version`
+
+
+Parameter | Description
+--------- | -----------
+KEMAL | KEMAL.
+KEMAL | KEMAL.
+KEMAL | KEMAL.
+
 
 # Report
 
