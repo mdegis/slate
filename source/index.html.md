@@ -75,6 +75,46 @@ username | Username of your auditor account.
 password | Password of your auditor account.
 scope | Scope of your token, in this case it is "shark"
 
+## Request Token with Refresh Token
+
+```shell
+curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
+  "client_id": "meowmeowmeow,
+  "client_secret": "weomweomweom",
+  "grant_type": "refresh_token",
+  "refresh_token": "yourrefreshtoken"
+}' "http://ocean.vispera.co/oauth/token"
+```
+
+> Make sure to replace `meowmeowmeow` with your client id, `weomweomweom` with your client secret `yourrefreshtoken` with refresh token.
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "access_token": "5db7fd1b3561f448b8b488db4deebc710aa153ce136e3c251e91f3522b1208cb",
+  "token_type": "bearer",
+  "expires_in": 7200,
+  "refresh_token": "4c221f165d2ac5eddb3ce171b1e6d4ae0877111e47932862a745d50875d426ba",
+  "scope": "shark",
+  "created_at": 1479907224
+}
+```
+
+
+### HTTP Request
+
+`POST http://ocean.vispera.co/oauth/token`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+client_id | Client ID that provided to you.
+client_secret | Client secret that provided to you.
+grant_type | Use "password" to get token.
+refresh_token | Your refresh token.
+
 # Kittens
 
 ## Get All Kittens
