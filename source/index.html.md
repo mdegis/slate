@@ -22,7 +22,16 @@ This example API documentation page was created with [Slate](https://github.com/
 
 # Authentication
 
-> To authorize, use this code:
+Shark uses API keys to allow access to the API. You cannot register a new Shark API key, but if you have an auditor account you may login with it.
+Shark expects for the API key to be included in all API requests to the server in a header that looks like the following:
+
+`Authorization: "Bearer $TOKEN$"`
+
+<aside class="notice">
+You must replace <code>$TOKEN$</code> with your personal API key.
+</aside>
+
+## Request Token
 
 ```shell
 curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
@@ -35,46 +44,44 @@ curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d
 }' "http://ocean.vispera.co/oauth/token"
 ```
 
-> Make sure to replace `meowmeowmeow` with your client id.
-> Make sure to replace `weomweomweom` with your client secret.
+> Make sure to replace `meowmeowmeow` with your client id and `weomweomweom` with your client secret.
 
-Shark uses API keys to allow access to the API. You cannot register a new Shark API key, but if you have an auditor account you may login with it.
-Shark expects for the API key to be included in all API requests to the server in a header that looks like the following:
+> The above command returns JSON structured like this:
 
-`Authorization: "Bearer $TOKEN$"`
+```json
+{
+  "access_token": "5db7fd1b3561f448b8b488db4deebc710aa153ce136e3c251e91f3522b1208cb",
+  "token_type": "bearer",
+  "expires_in": 7200,
+  "refresh_token": "4c221f165d2ac5eddb3ce171b1e6d4ae0877111e47932862a745d50875d426ba",
+  "scope": "shark",
+  "created_at": 1479907224
+}
+```
 
-<aside class="notice">
-You must replace <code>$TOKEN$</code> with your personal API key.
-</aside>
+
+### HTTP Request
+
+`POST http://ocean.vispera.co/oauth/token`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+client_id | Client ID that provided to you.
+client_secret | Client secret that provided to you.
+grant_type | Use "password" to get token.
+username | Username of your auditor account.
+password | Password of your auditor account.
+scope | Scope of your token, in this case it is "shark"
 
 # Kittens
 
 ## Get All Kittens
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
 ```shell
 curl "http://example.com/api/kittens"
   -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
 ```
 
 > The above command returns JSON structured like this:
