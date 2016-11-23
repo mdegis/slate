@@ -101,7 +101,6 @@ curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d
 }
 ```
 
-
 ### HTTP Request
 
 `POST http://ocean.vispera.co/oauth/token`
@@ -114,6 +113,26 @@ client_id | Client ID that provided to you.
 client_secret | Client secret that provided to you.
 grant_type | Use "password" to get token.
 refresh_token | Your refresh token.
+
+## Revoke Token 
+
+```shell
+curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" '{
+	"token": "5db7fd1b3561f448b8b488db4deebc710aa153ce136e3c251e91f3522b1208cb"
+}' "http://localhost:3000/oauth/revoke"
+```
+
+> The above command does not return anything expect HTTP Status code 200. 
+
+### HTTP Request
+
+`POST http://ocean.vispera.co/oauth/revoke`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+token | Token that you want to revoke.
 
 # Kittens
 
