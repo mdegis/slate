@@ -134,6 +134,32 @@ Parameter | Description
 --------- | -----------
 token | Token that you want to revoke.
 
+# Auditor
+
+Get logged auditor.
+
+```shell
+curl -X GET -H "Authorization: Bearer $TOKEN$" 
+-H "Cache-Control: no-cache" -H "http://localhost:3000/api/shark/v1/auditors/me"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 479,
+  "username": "test",
+  "name": "John",
+  "surname": "Snow",
+  "email": "test@vispera.co"
+}
+```
+
+### HTTP Request
+
+`GET http://ocean.vispera.co/api/shark/v1/auditors/me`
+
+
 # Report
 
 ## Get All Reports 
