@@ -134,13 +134,12 @@ Parameter | Description
 --------- | -----------
 token | Token that you want to revoke.
 
-# Kittens
+# Report
 
-## Get All Kittens
+## Get All Reports 
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl -X GET -H "Authorization: Bearer $TOKEN$" "http://localhost:3000/api/shark/v1/reports"
 ```
 
 > The above command returns JSON structured like this:
@@ -148,82 +147,72 @@ curl "http://example.com/api/kittens"
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "id":6596,
+    "type":"ImageSetReport",
+    "visit_id":"bf0ad8d1-c0d2-456f-bcaf-5cad2e01e62a",
+    "image_set_id":"26ccd17f-974a-489a-b6e6-f1880e108112",
+    "store_name":"CarrefourSA Altayçeşme",
+    "image_set_type":"Shelf",
+    "url":"http://ocean.vispera.co/embedded/reports/6596",
+    "updated_at":"2016-11-23T13:07:21.494Z"
   },
   {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "id":6597,
+    "type":"VisitReport",
+    "visit_id":"bf0ad8d1-c0d2-456f-bcaf-5cad2e01e62a",
+    "image_set_id":null,
+    "store_name":"CarrefourSA Altayçeşme",
+    "image_set_type":null,
+    "url":"http://ocean.vispera.co/embedded/reports/6597",
+    "updated_at":"2016-11-23T13:07:39.046Z"
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all reports.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://localhost:3000/api/shark/v1/reports`
 
-### Query Parameters
+# Message
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Get All Messages
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl -X GET -H "Authorization: Bearer $TOKEN$" "http://localhost:3000/api/shark/v1/messages"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+[
+  {
+    "id":1,
+    "title":"ImageSetReport",
+    "content":"ImageSetReport",
+    "created_at":"2016-11-23T13:07:21.494Z"
+  }
+]
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieves all messages.
+
+### HTTP Request
+
+`GET http://localhost:3000/api/shark/v1/messages`
+
+
+
+
+
+# Test
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+
+<aside class="success">
+Remember — a happy kitten is an authenticated kitten!
+</aside>
 
 ### HTTP Request
 
