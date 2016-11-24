@@ -122,7 +122,7 @@ curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" '{
 }' "http://localhost:3000/oauth/revoke"
 ```
 
-> The above command does not return anything expect HTTP Status code 200. 
+> The above command does not return anything expect HTTP Status code 204. 
 
 ### HTTP Request
 
@@ -514,7 +514,7 @@ curl --KEMAL
 
 `POST http://localhost:3000/api/shark/v1/data/version`
 
-
+### Query Parameters
 Parameter | Description
 --------- | -----------
 KEMAL | KEMAL.
@@ -590,9 +590,33 @@ This endpoint retrieves all messages.
 
 `GET http://localhost:3000/api/shark/v1/messages`
 
+# Image Service
 
+```shell
+curl -X PATCH -H "Authorization: Bearer $TOKEN$" -H "Content-Type: multipart/form-data" 
+-F "file=@file.jpg" "http://localhost:3000/api/shark/v1/images/$IMAGE_ID$"
+```
 
+> The above command does not return anything expect HTTP Status code 204. 
 
+Update an image.
+
+### HTTP Request
+
+`PATCH http://localhost:3000/api/shark/v1/images/$IMAGE_ID$`
+
+### Query Parameters
+Multipart form-data
+
+Parameter | Description
+--------- | -----------
+file| New image file.
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+IMAGE_ID | The ID of the image to change. 
 
 # Test
 
