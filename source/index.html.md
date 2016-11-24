@@ -618,6 +618,61 @@ Parameter | Description
 --------- | -----------
 IMAGE_ID | The ID of the image to change. 
 
+# Answer Service
+
+```shell
+curl -X PATCH -H "Authorization: Bearer $TOKEN$" -H "Content-Type: multipart/form-data" 
+-F "file=@file.jpg|.mp4" "http://localhost:3000/api/shark/v1/answers/$ANSWER_ID$"
+```
+
+> The above command does not return anything expect HTTP Status code 204. 
+
+### HTTP Request
+
+`PATCH http://localhost:3000/api/shark/v1/answers/$ANSWER_ID$`
+
+### Query Parameters
+Multipart form-data
+
+Parameter | Description
+--------- | -----------
+file| New image or video file.
+
+<aside class="success">
+Please note that file can be image or video.
+</aside>
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ANSWER_ID | The ID of the image or video to change. 
+
+# GPS Log Service
+
+```shell
+curl -X POST -H "Authorization: Bearer $TOKEN$" -F "latitude=123.1" -F "longitude=123.1" 
+-F "provider=satellite" -F "satellite_count=1" -F "recorded_at=2016-11-23T13:07:21.494Z" 
+"http://localhost:3000/api/shark/v1/gps_logs"
+```
+
+> The above command does not return anything expect HTTP Status code 201. 
+
+### HTTP Request
+
+`POST http://localhost:3000/api/shark/v1/gps_logs`
+
+### Query Parameters
+Multipart form-data
+
+Parameter | Description
+--------- | -----------
+latitude | Latitude of GPS coordinate.
+longitude | Longitude of GPS coordinate.
+provider | One of [satellite, cellular, wifi].
+satellite_count | number of satellite.
+recorded_at | Recored date and time of this log.
+
 # Test
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
