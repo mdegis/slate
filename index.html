@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Gate API Reference</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +86,12 @@
   color: #90a959;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -102,8 +102,6 @@
       <img src="images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -111,157 +109,530 @@
         <ul class="search-results"></ul>
       <div id="toc">
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>Welcome to the Gate API documantation! You can use Gate API to synchronize VES and Ocean.</p>
 
 <h1 id="authentication">Authentication</h1>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>Gate uses API keys to allow access to the API. You cannot register a new Gate API key, it will be provided by someone in WHO.
+Gate expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<p><code class="prettyprint">Authorization: &quot;Bearer $TOKEN$&quot;</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>$TOKEN$</code> with your API key.
 </aside>
 
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all kittens.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h2 id="request-token">Request Token</h2>
+<pre class="highlight shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> -H -d <span class="s1">'{
+  "client_id": "9f1b8b5649e62f1531e67f445b62103e0d91298c19491390a37bb9ef8db13a32",
+  "client_secret": "653ce03911d988aaa6ad8ac7be292a39e7b0ac76ee9e3a8146d9c292b4919009",
+  "grant_type": "client_credentials",
+  "scope": "gate"
+}'</span> <span class="s2">"http://localhost:3000/oauth/token"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJvY2Vhbi52aXNwZXJhLmNvIiwic3ViIjo2LCJleHAiOjcyMDAsImlhdCI6IjIwMTctMDEtMDYgMDk6MDU6MDQgVVRDIiwiYXBwbGljYXRpb24iOiIjPERvb3JrZWVwZXI6OkFwcGxpY2F0aW9uOjB4MDA1NjUzYjI4OGRmZTA-In0.bvmfOXc0X1b7MetXvcfqr4gjs0aNKUMGwUmfKgsmOwE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gate"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483693504</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
+<h3 id="http-request">HTTP Request</h3>
 
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p><code class="prettyprint">POST http://ocean.vispera.co/oauth/token</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>client_id</td>
+<td>Client ID that provided to you.</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>Client secret that provided to you.</td>
+</tr>
+<tr>
+<td>grant_type</td>
+<td>Use &ldquo;client_credentials&rdquo; to get token.</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Scope of your token, in this case it is &ldquo;gate&rdquo;</td>
+</tr>
+</tbody></table>
+
+<h2 id="revoke-token">Revoke Token</h2>
+<pre class="highlight shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> -H <span class="s2">"Cache-Control: no-cache"</span> <span class="s1">'{
+    "token": "$TOKEN$"
+}'</span> <span class="s2">"http://ocean.vispera.co/oauth/revoke"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command does not return anything expect HTTP Status code 204.</p>
+</blockquote>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">POST http://ocean.vispera.co/oauth/revoke</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>Token that you want to revoke.</td>
+</tr>
+</tbody></table>
+
+<h1 id="visit">Visit</h1>
+
+<h2 id="get-all-visits">Get All Visits</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN$ </span><span class="s2">"</span>http://localhost:3000/api/gate/v1/visits<span class="s2">"
+</span></code></pre>
+
+<p>Get all visits.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69c68927-cf20-43be-a6f7-74975ebd8542"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.220Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.220Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d4cf4d6c-81c7-41ae-9743-15bdc46767a6"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.248Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.248Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3db624c1-9dbb-4477-8e0a-0d4506bc84d9"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.275Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.275Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d4cf4d6c-81c7-41ae-9743-15bdc46767a6"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d4cf4d6c-81c7-41ae-9743-15bdc46767a6"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d93cad67-9ccb-483a-9c19-09c3cc406e44"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"captured_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.312Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="nt">"inclination"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"focal_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vispera-ocean.s3.amazonaws.com/uploads/image/file/d93c/ad67/9ccb/483a/9c19/09c3/cc40/6e44/20161229t140721_d93cad67_9ccb_483a_9c19_09c3cc406e44.png"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"horizontal_index"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"vertical_index"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dc14757-f214-412e-8ded-601162bdc8c6"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"captured_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.514Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="nt">"inclination"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"focal_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vispera-ocean.s3.amazonaws.com/uploads/image/file/2dc1/4757/f214/412e/8ded/6011/62bd/c8c6/20161229t140721_2dc14757_f214_412e_8ded_601162bdc8c6.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"horizontal_index"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"vertical_index"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dfacc1c4-e1bd-4ccc-9e2f-026bdbb517f5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:46.674Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:46.674Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37f53175-c0c9-4678-b64d-4f4eed8fa42d"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:46.768Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:46.768Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d205efb-66ef-413d-9fe6-6f1843e6f1f3"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:46.840Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:46.840Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37f53175-c0c9-4678-b64d-4f4eed8fa42d"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37f53175-c0c9-4678-b64d-4f4eed8fa42d"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"da0f68da-c2f6-44c8-8e65-d9a3d40ca5a7"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:33.706Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:33.706Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f11189d5-695c-4cba-948d-c75cbe58d06d"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:33.803Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:33.803Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"614c6f13-f7e3-476f-ae54-23ab9a3ec5e1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:33.900Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:05:33.900Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f11189d5-695c-4cba-948d-c75cbe58d06d"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f11189d5-695c-4cba-948d-c75cbe58d06d"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d29733f8-32b7-4183-bac0-3aff08fb263d"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:02:22.984Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:02:22.984Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69cf100a-7981-47ba-b404-951d04cfb272"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:02:23.010Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:02:23.010Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d68d1d8d-a01f-46c5-9fb2-d1a1cdcfdbc4"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:02:23.033Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:02:23.033Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69cf100a-7981-47ba-b404-951d04cfb272"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69cf100a-7981-47ba-b404-951d04cfb272"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"022cc9af-f208-49f6-9e53-b5d67aa9619a"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.462Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.462Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24d2c3b0-fb9a-4ff5-bb3a-9bc9843d6eea"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.495Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.495Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7c891f31-3174-4836-a48d-e91af0ef2d84"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.530Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.530Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24d2c3b0-fb9a-4ff5-bb3a-9bc9843d6eea"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24d2c3b0-fb9a-4ff5-bb3a-9bc9843d6eea"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23fc43ab-9a1f-464d-80e4-63d057e762dc"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:53.798Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:53.798Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d8965783-0cf1-4035-99f6-ec0e4a3bd619"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:53.898Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:53.898Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2ef07f62-5a7c-4e2b-b382-f2a3388675d4"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:54.007Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:54.007Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d8965783-0cf1-4035-99f6-ec0e4a3bd619"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d8965783-0cf1-4035-99f6-ec0e4a3bd619"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cdbcb2fc-623c-42c6-b02d-80069867cd8c"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:33.521Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:33.521Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"552683d7-320d-4c83-861e-5e938a62074e"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:33.630Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:33.631Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0300e827-5517-4bc9-837f-0ca5d328fa44"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:33.728Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:33.728Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"552683d7-320d-4c83-861e-5e938a62074e"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"552683d7-320d-4c83-861e-5e938a62074e"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cdf0167a-6572-45d6-8467-02019e19ad66"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:09.054Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:09.054Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d995bbf-bb70-4b60-b496-8db434db5ec5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:09.159Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:09.159Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58a4ce42-0b09-43e9-8c46-4c223980aa71"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:09.220Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:59:09.220Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d995bbf-bb70-4b60-b496-8db434db5ec5"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d995bbf-bb70-4b60-b496-8db434db5ec5"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2a91404e-ab3e-4d67-afa0-f939f2ff017b"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:58:20.764Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:58:20.764Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1caf362d-5e3c-4337-9707-afb79bf397aa"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:58:20.789Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:58:20.789Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"afd0b34a-f3ef-45cd-b3b1-4f150c81e708"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:58:20.825Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:58:20.825Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1caf362d-5e3c-4337-9707-afb79bf397aa"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1caf362d-5e3c-4337-9707-afb79bf397aa"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0b257ad1-0315-4c90-b025-d93c0614bf58"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:57:20.319Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:57:20.319Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0470c755-c567-4b75-bbcc-ee536e2665e1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:57:20.415Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:57:20.415Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eabb4b66-63be-41fe-b73b-a8cfe2e98ea9"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:57:20.477Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T13:57:20.477Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0470c755-c567-4b75-bbcc-ee536e2665e1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0470c755-c567-4b75-bbcc-ee536e2665e1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h2 id="get-specific-visit">Get Specific Visit</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN$ </span><span class="s2">"</span>http://localhost:3000/api/gate/v1/visits/<span class="nv">$ID</span><span class="s2">$"
+</span></code></pre>
+
+<p>Get specific visit with ID.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"022cc9af-f208-49f6-9e53-b5d67aa9619a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"store_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UĞUR GIDA-UĞUR BAYDENİZ-"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"store_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"auditor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dataentryuser"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.462Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.462Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24d2c3b0-fb9a-4ff5-bb3a-9bc9843d6eea"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.495Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.495Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7c891f31-3174-4836-a48d-e91af0ef2d84"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outside"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.530Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:00:00.530Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"action_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24d2c3b0-fb9a-4ff5-bb3a-9bc9843d6eea"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24d2c3b0-fb9a-4ff5-bb3a-9bc9843d6eea"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"sku_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"reference_image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2dcf33ce-91c9-4f12-97de-04e17af27f2f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/gate/v1/visits/$ID$</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -273,15 +644,407 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>The ID of the visit</td>
 </tr>
 </tbody></table>
 
+<h2 id="update-specific-visit">Update Specific Visit</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN$ </span><span class="s2">"</span>http://localhost:3000/api/gate/v1/visits/<span class="nv">$ID</span><span class="s2">$" -d '{
+    "</span>visit<span class="s2">": {
+        "</span>status<span class="s2">": "</span>accomplished<span class="s2">"
+    }
+</span></code></pre>
+
+<p>Update specific visit with ID.</p>
+
+<blockquote>
+<p>The above command does not return anything expect HTTP Status code 204.</p>
+</blockquote>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/api/gate/v1/visits/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the visit</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>JSON Data</td>
+<td>Json data of visit (fields you want to change)</td>
+</tr>
+</tbody></table>
+
+<p>Visit data example:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="nt">"download_completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">||</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"visit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="w"> </span><span class="err">||</span><span class="w"> </span><span class="s2">"accomplished"</span><span class="w"> </span><span class="p">}}</span><span class="w">
+</span></code></pre>
+
+<h1 id="stock-keeping-units">Stock Keeping Units</h1>
+
+<h2 id="get-stock-keeping-units-list">Get Stock Keeping Units List</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN$ </span><span class="s2">"</span>http://localhost:3000/api/gate/v1/stock_keeping_units<span class="s2">"
+</span></code></pre>
+
+<p>Get list of stock keeping units.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maras usulü tel kadayifli"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-31T14:02:17.572Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maras usulü ayva tatlili"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-31T14:02:17.570Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">109</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maras usulü ekmek kadayifli"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-31T14:02:17.568Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">108</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mini nogger sandwich mix"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-31T14:02:17.566Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">107</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buzzy çilek vanilya"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-31T14:02:17.564Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/gate/v1/stock_keeping_units</code></p>
+
+<h2 id="get-specific-stock-keeping-units">Get Specific Stock Keeping Units</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN$ </span><span class="s2">"</span>http://localhost:3000/api/gate/v1/stock_keeping_units/<span class="nv">$ID</span><span class="s2">$"
+</span></code></pre>
+
+<p>Get specific stock keeping units with ID.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maras usulü tel kadayifli"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"954"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"producer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"algida"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"package_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"package_size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"package_size_unit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"size_unit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"unit_per_package"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-31T14:02:17.572Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sku_views"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/gate/v1/stock_keeping_units/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the visit</td>
+</tr>
+</tbody></table>
+
+<h1 id="product-group">Product Group</h1>
+
+<h2 id="get-product-group-list">Get Product Group List</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN$ </span><span class="s2">"</span>http://localhost:3000/api/gate/v1/product_groups<span class="s2">"
+</span></code></pre>
+
+<p>Get list of product_groups.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80bf82e1-336b-40ee-bc6e-bc9a99dc2007"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"olas_demo_product_group"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-02T09:17:13.161Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stock_keeping_unit_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49c931c3-c31e-4b64-9ca1-ebb97eb14a69"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field_demo_milk_category"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-21T14:46:12.707Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stock_keeping_unit_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d63fd4ea-71f5-414b-b1ba-ba151888f71c"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field_demo_soft_drinks"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-21T14:43:15.021Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stock_keeping_unit_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e76a2246-eb02-470d-92ca-33fe136bbd66"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cch_russia_demo_product_group"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-09T15:09:01.483Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stock_keeping_unit_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ea28fbad-0acc-4079-99e9-aa3671a69b5f"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"png_product_group"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-27T15:40:07.646Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stock_keeping_unit_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/gate/v1/product_groups</code></p>
+
+<h1 id="image-set">Image Set</h1>
+
+<h2 id="update-specific-image-set">Update Specific Image Set</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN$ </span><span class="s2">-d '{"</span>image_set<span class="s2">": { "</span>images_attributes<span class="s2">": [{"</span>id<span class="s2">": "</span>d93cad67-9ccb-483a-9c19-09c3cc406e44<span class="s2">", "</span>active<span class="s2">": true, "</span>posion<span class="s2">": 1}]}}' "</span>http://localhost:3000/api/gate/v1/image_sets/3db624c1-9dbb-4477-8e0a-0d4506bc84d9<span class="s2">"
+</span></code></pre>
+
+<p>Update specific Image Set with ID.</p>
+
+<blockquote>
+<p>The above command does not return anything expect HTTP Status code 204.</p>
+</blockquote>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/api/gate/v1/visits/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the visit</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>JSON Data</td>
+<td>Json data of visit (fields you want to change)</td>
+</tr>
+</tbody></table>
+
+<p>Visit data example:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="nt">"image_set"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"images_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d93cad67-9ccb-483a-9c19-09c3cc406e44"</span><span class="p">,</span><span class="w"> </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"posion"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">}]}}</span><span class="w">
+</span></code></pre>
+
+<h1 id="image">Image</h1>
+
+<h2 id="update-specific-image-data">Update Specific Image Data</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN$ </span><span class="s2"> -d '{
+  "</span>id<span class="s2">": "</span>d93cad67-9ccb-483a-9c19-09c3cc406e44<span class="s2">",
+  "</span>image_set_id<span class="s2">": "</span>3db624c1-9dbb-4477-8e0a-0d4506bc84d9<span class="s2">",
+  "</span>captured_at<span class="s2">": "</span>2016-12-29T14:07:21.312Z<span class="s2">",
+  "</span>inclination<span class="s2">": 0,
+  "</span>focal_length<span class="s2">": 0,
+  "</span>position<span class="s2">": 1,
+  "</span>horizontal_index<span class="s2">": 1,
+  "</span>vertical_index<span class="s2">": 2
+}' "</span>http://localhost:3003/api/gate/v1/images/d93cad67-9ccb-483a-9c19-09c3cc406e44<span class="s2">"
+</span></code></pre>
+
+<p>Update specific Image Set with ID.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d93cad67-9ccb-483a-9c19-09c3cc406e44"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3db624c1-9dbb-4477-8e0a-0d4506bc84d9"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"captured_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.312Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"inclination"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"focal_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"file_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image/file/d93c/ad67/9ccb/483a/9c19/09c3/cc40/6e44/20161229t140721_d93cad67_9ccb_483a_9c19_09c3cc406e44.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"horizontal_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vertical_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/api/gate/v1/visits/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the visit</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>JSON Data</td>
+<td>Json data of image (fields you want to change)</td>
+</tr>
+</tbody></table>
+
+<p>Visit data example:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d93cad67-9ccb-483a-9c19-09c3cc406e44"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3db624c1-9dbb-4477-8e0a-0d4506bc84d9"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"captured_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.312Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"inclination"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"focal_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"horizontal_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vertical_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="update-specific-image-file">Update Specific Image File</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN$ </span><span class="s2"> -H "</span>Content-Type: multipart/form-data;<span class="s2">" -F "</span><span class="nv">file</span><span class="o">=</span>@FILENAME.jpg<span class="s2">"
+"</span>http://localhost:3000/api/gate/v1/images/d93cad67-9ccb-483a-9c19-09c3cc406e44<span class="s2">"
+</span></code></pre>
+
+<p>Update specific Image file with ID.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d93cad67-9ccb-483a-9c19-09c3cc406e44"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3db624c1-9dbb-4477-8e0a-0d4506bc84d9"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"captured_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-29T14:07:21.312Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"inclination"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"focal_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"file_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image/file/d93c/ad67/9ccb/483a/9c19/09c3/cc40/6e44/20161229t140721_d93cad67_9ccb_483a_9c19_09c3cc406e44.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"horizontal_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vertical_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/api/gate/v1/visits/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the visit</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<p>Multipart form-data</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>New image file.</td>
+</tr>
+</tbody></table>
+
+<p>.</p>
+
           <h1 id="errors">Errors</h1>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+<aside class="warning">Do not forget to add your token in request head like this: 
+Authorization: Bearer $TOKEN$
+</aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>The Shark API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -299,15 +1062,15 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Forbidden &ndash; The requested is hidden for administrators only</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Not Found &ndash; The specified resource could not be found</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>Method Not Allowed &ndash; You tried to access a resource with an invalid method</td>
 </tr>
 <tr>
 <td>406</td>
@@ -315,7 +1078,7 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+<td>Gone &ndash; The resource requested has been removed from our servers</td>
 </tr>
 <tr>
 <td>418</td>
@@ -323,7 +1086,7 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many resources! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -339,8 +1102,6 @@ Remember — a happy kitten is an authenticated kitten!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
