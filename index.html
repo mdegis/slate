@@ -357,6 +357,813 @@ You must replace <code>$TOKEN$</code> with your personal API key.
 </tr>
 </tbody></table>
 
+<h2 id="get-all-visits-by-survey">Get All Visits by Survey</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/geyser/v1/surveys/</span><span class="nv">$ID$/</span><span class="s2">visits"</span>
+</code></pre>
+
+<p>Get all visits by surveys.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e76fd83-41ee-4b29-9afc-d5fc140723a2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accomplished"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"assignment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"uploaded_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"downloaded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"internal_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"supervision_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"report_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"discarded"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/geyser/v1/surveys/$ID$/visits</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the visit</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-not-downloaded-visits-by-survey">Get Not Downloaded Visits by Survey</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/geyser/v1/surveys/</span><span class="nv">$ID$/</span><span class="s2">visits/pending_download"</span>
+</code></pre>
+
+<p>Get not downloaded visits by surveys.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e76fd83-41ee-4b29-9afc-d5fc140723a2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accomplished"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"assignment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"uploaded_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"downloaded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"internal_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"supervision_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auditor_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"report_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"discarded"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/geyser/v1/surveys/$ID$/visits/pending_download</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the visit</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-visit-39-s-downloaded-status-as-marked-downloaded">Update Visit&rsquo;s Downloaded Status as Marked (downloaded)</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> -H <span class="s2">"Content-Type: application/json"</span>
+<span class="s2">"http://localhost:3000/api/geyser/v1/surveys/</span><span class="nv">$survey_id$/</span><span class="s2">visits/</span><span class="nv">$visit_id$/</span><span class="s2">mark"</span>
+</code></pre>
+
+<p>Get not downloaded visits by surveys.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e76fd83-41ee-4b29-9afc-d5fc140723a2"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accomplished"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"assignment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"uploaded_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"downloaded_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-20T15:10:10.600Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"internal_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"supervision_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"auditor_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"start_latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"start_longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"report_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"discarded"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/api/geyser/v1/surveys/$survey_id$/visits/$visit_id$/mark</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>survey_id</td>
+<td>The Survey ID of the visit</td>
+</tr>
+<tr>
+<td>visit_id</td>
+<td>The Visit ID of the visit</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-visit-39-s-downloaded-status-as-unmarked-undownloaded">Update Visit&rsquo;s Downloaded Status as Unmarked (undownloaded)</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> -H <span class="s2">"Content-Type: application/json"</span>
+<span class="s2">"http://localhost:3000/api/geyser/v1/surveys/</span><span class="nv">$survey_id$/</span><span class="s2">visits/</span><span class="nv">$visit_id$/</span><span class="s2">unmark"</span>
+</code></pre>
+
+<p>Get not downloaded visits by surveys.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e76fd83-41ee-4b29-9afc-d5fc140723a2"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accomplished"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sealed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"assignment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"uploaded_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"downloaded_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-20T15:10:10.600Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"internal_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"supervision_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"auditor_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"start_latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"start_longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"report_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"discarded"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/api/geyser/v1/surveys/$survey_id$/visits/$visit_id$/unmark</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>survey_id</td>
+<td>The Survey ID of the visit</td>
+</tr>
+<tr>
+<td>visit_id</td>
+<td>The Visit ID of the visit</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-visit-data">Delete Visit Data</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> -H <span class="s2">"Content-Type: application/json"</span>
+<span class="s2">"http://localhost:3000/api/geyser/v1/surveys/</span><span class="nv">$survey_id$/</span><span class="s2">visits/</span><span class="nv">$visit_id$/</span><span class="s2">unmark"</span>
+
+curl -X DELETE -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/geyser/v1/surveys/</span><span class="nv">$survey_id$/</span><span class="s2">visits/</span><span class="nv">$visit_id</span><span class="err">$</span><span class="s2">
+</span></code></pre>
+
+<p>Delete the given visit by ID.</p>
+
+<blockquote>
+<p>The above command does not return anything expect HTTP Status code 204.</p>
+</blockquote>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE http://localhost:3000/api/geyser/v1/surveys/$survey_id$/visits/$visit_id$/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>survey_id</td>
+<td>The Survey ID of the visit</td>
+</tr>
+<tr>
+<td>visit_id</td>
+<td>The Visit ID of the visit</td>
+</tr>
+</tbody></table>
+
+<!-- 0864213579 -->
+
+<h1 id="assignments">Assignments</h1>
+
+<h2 id="get-all-assignments">Get all assignments</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/geyser/v1/assignments"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERNOD_ESKISEHIR_201702"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERNOD_ESKISEHIR_201702"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERNOD_ESKISEHIR_201702"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-08T21:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-09T20:59:59.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"frequency_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"once"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"frequency_interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERNOD_ISTANBUL_201702"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERNOD_ISTANBUL_201702"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERNOD_ISTANBUL_201702"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-08T21:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-09T20:59:59.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"frequency_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"once"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"frequency_interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/geyser/v1/assignments/$ID$</code></p>
+
+<h2 id="get-specific-assignment">Get specific assignment</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/geyser/v1/assignments/</span><span class="nv">$ID</span><span class="s2">$"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERNOD_ESKISEHIR_201702"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERNOD_ESKISEHIR_201702"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERNOD_ESKISEHIR_201702"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-08T21:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-09T20:59:59.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"frequency_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"once"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"frequency_interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/geyser/v1/assignments/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the assignment</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-an-assignment">Update an assignment</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> -H <span class="s2">"Content-Type: application/json"</span> -d <span class="s1">'{ "assignment": {
+      "name": "TUBORG_ISTANBUL_201702",
+      "display_name": "TUBORG_ISTANBUL_201702",
+      "description": "TUBORG_ISTANBUL_201702",
+      "active": true,
+      "start_time": "2017-02-08T21:00:00.000Z",
+      "end_time": "2017-03-09T20:59:59.000Z",
+      "reference": false,
+      "frequency_type": "once",
+      "frequency_interval": 1,
+      "team_id": 48,
+      "auditor_id": 40,
+      "survey_id": 20,
+      "route_id": 18
+    }
+}
+
+'</span> <span class="s2">"http://localhost:3000/api/geyser/v1/assignments/44"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG_ISTANBUL_201702"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG_ISTANBUL_201702"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG_ISTANBUL_201702"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-08T21:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-09T20:59:59.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"frequency_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"once"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"frequency_interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"auditor_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"survey_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"route_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/api/geyser/v1/assignments/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the assignment</td>
+</tr>
+</tbody></table>
+
+<h1 id="store-pools">Store Pools</h1>
+
+<h2 id="get-all-store-pools">Get all store pools</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/geyser/v1/store_pools"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"strpll_555771889"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuborg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuborg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuborg Store Pool"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-05T21:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-06T20:59:59.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"property_keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"ATTRIB01"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stores"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">943</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010077006"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAG ET VE SARKUTERI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag Et Ve Sarkuteri"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010077006 BAG ET VE SARKUTERI Muderris Salih Rustu Sk. NO: 5/B-2 ULUS APT. Nispe Besiktas, ISTANBUL, TR, TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"store_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.072234"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Muderris Salih Rustu Sk. NO: 5/B-2 ULUS APT. Nispe Besiktas"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISTANBUL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ideal_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70034"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"ATTRIB01"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OFF TRADE"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
+      </span><span class="nt">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201701"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201701"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/geyser/v1/store_pools</code></p>
+
+<h2 id="get-specific-store-pool">Get specific store pool</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/geyser/v1/store_pools/</span><span class="nv">$ID</span><span class="s2">$"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"strpll_555771889"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuborg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuborg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuborg Store Pool"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-05T21:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-06T20:59:59.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"property_keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"ATTRIB01"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stores"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">943</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010077006"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAG ET VE SARKUTERI"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag Et Ve Sarkuteri"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010077006 BAG ET VE SARKUTERI Muderris Salih Rustu Sk. NO: 5/B-2 ULUS APT. Nispe Besiktas, ISTANBUL, TR, TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"store_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.072234"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Muderris Salih Rustu Sk. NO: 5/B-2 ULUS APT. Nispe Besiktas"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISTANBUL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ideal_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70034"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ATTRIB01"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OFF TRADE"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201701"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201701"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/geyser/v1/store_pools/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the store pool</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-store-pool">Update a store pool</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> -H <span class="s2">"Content-Type: application/json"</span> -d <span class="s1">'{"store_pool": {
+    "key": "strpll_555771889",
+    "name": "Tuborg",
+    "display_name": "Tuborg",
+    "description": "Tuborg Store Pool",
+    "active": true,
+    "start_time": "2017-02-05T21:00:00.000Z",
+    "end_time": "2017-03-06T20:59:59.000Z",
+    "property_keys": [
+        "ATTRIB01"
+    ],
+    "project_id": 9,
+    "peroid_id": 1,
+    "store_ids": [943]
+    }
+}'</span> <span class="s2">"http://localhost:3000/api/geyser/v1/store_pools/</span><span class="nv">$ID</span><span class="s2">$"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"strpll_555771889"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuborg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuborg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuborg Store Pool"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-05T21:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-06T20:59:59.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"property_keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"ATTRIB01"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stores"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">943</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010077006"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAG ET VE SARKUTERI"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag Et Ve Sarkuteri"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010077006 BAG ET VE SARKUTERI Muderris Salih Rustu Sk. NO: 5/B-2 ULUS APT. Nispe Besiktas, ISTANBUL, TR, TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"store_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.072234"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Muderris Salih Rustu Sk. NO: 5/B-2 ULUS APT. Nispe Besiktas"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISTANBUL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ideal_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70034"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ATTRIB01"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OFF TRADE"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201701"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201701"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/api/geyser/v1/assignments/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the store pool</td>
+</tr>
+</tbody></table>
+
+<h1 id="routes">Routes</h1>
+
+<h2 id="get-all-routes">Get all routes</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/geyser/v1/routes"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtt_352171076"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL_CANLI"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL_CANLI"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-07T14:33:46.291Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stores"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">830</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010076251"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELVI BUFE"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Selvi Bufe"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010076251 SELVI BUFE Arkan Cd. NO: 5/2 OTO SANAYI SIT. Huzur Mh. Sisli, ISTANBUL, TR, TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"store_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.096054"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arkan Cd. NO: 5/2 OTO SANAYI SIT. Huzur Mh. Sisli"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISTANBUL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ideal_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70034"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"ATTRIB01"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OFF TRADE"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">831</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010076259"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINE SOYLEMEZ"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mine Soylemez"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010076259 MINE SOYLEMEZ Zincirlidere Cd. NO:59/1  Gulbahar Mh. Sisli, ISTANBUL, TR, TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"store_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.074516"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zincirlidere Cd. NO:59/1  Gulbahar Mh. Sisli"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISTANBUL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ideal_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70034"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"ATTRIB01"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OFF TRADE"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/geyser/v1/routes</code></p>
+
+<h2 id="get-specific-route">Get specific route</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/geyser/v1/routes/</span><span class="nv">$ID</span><span class="s2">$"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtt_352171076"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL_CANLI"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL_CANLI"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-07T14:33:46.291Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stores"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">830</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010076251"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELVI BUFE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Selvi Bufe"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010076251 SELVI BUFE Arkan Cd. NO: 5/2 OTO SANAYI SIT. Huzur Mh. Sisli, ISTANBUL, TR, TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"store_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.096054"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arkan Cd. NO: 5/2 OTO SANAYI SIT. Huzur Mh. Sisli"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISTANBUL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ideal_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70034"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ATTRIB01"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OFF TRADE"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/api/geyser/v1/routes/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the route</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-route">Update a route</h2>
+<pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> -H <span class="s2">"Content-Type: application/json"</span> -d <span class="s1">'{ "route" : {
+    "name": "TUBORG _ISTANBUL",
+    "display_name": "TUBORG _ISTANBUL_CANLI",
+    "description": "TUBORG _ISTANBUL_CANLI",
+    "store_pool_id": 9,
+    "store_ids": [830,831]
+    }
+}'</span> <span class="s2">"http://localhost:3000/api/geyser/v1/routes/</span><span class="nv">$ID</span><span class="s2">$"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtt_352171076"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL_CANLI"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL_CANLI"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-07T14:33:46.291Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stores"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">830</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010076251"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELVI BUFE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Selvi Bufe"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70010076251 SELVI BUFE Arkan Cd. NO: 5/2 OTO SANAYI SIT. Huzur Mh. Sisli, ISTANBUL, TR, TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"store_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.096054"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arkan Cd. NO: 5/2 OTO SANAYI SIT. Huzur Mh. Sisli"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISTANBUL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ideal_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70034"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ATTRIB01"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OFF TRADE"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/api/geyser/v1/routes/$ID$</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the route</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> </span><span class="nt">"route"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL_CANLI"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUBORG _ISTANBUL_CANLI"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"store_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">830</span><span class="p">,</span><span class="mi">831</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <p>.</p>
 
           <h1 id="errors">Errors</h1>
