@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Shark API Reference</title>
+    <title>Ocean Wave API</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -111,7 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://github.com/lavkumarv'>Documentation Powered by lav</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -119,798 +119,193 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Shark API! You can use our API to upload images to Ocean API endpoints or get generated reports, which can get information abou the project.</p>
+<p>Ocean reports. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a malesuada augue. Maecenas suscipit nunc libero, vel tristique dolor aliquet in. Vestibulum et tempus massa. Mauris egestas nisl ut nulla posuere bibendum. Suspendisse sed cursus felis. Nulla fermentum urna in tortor fringilla, et porttitor ipsum varius. Proin eu lorem lectus. Mauris semper bibendum accumsan. Etiam dui lorem, efficitur sit amet mattis ut, dictum a massa. Proin non turpis congue, congue massa eget, egestas ante. Ut et arcu vel tellus pharetra pulvinar vel ut lorem. </p>
 
-<p>This example API documentation page was created with <a href="https://github.com/mdegis/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p><strong>Version:</strong> 1.0.0 </p>
+
+<p><a href="http://doc.vispera.co">Find out more about our other APIs</a> </p>
 
 <h1 id="authentication">Authentication</h1>
 
-<p>Shark uses API keys to allow access to the API. You cannot register a new Shark API key, but if you have an auditor account you may login with it.
-Shark expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: &quot;Bearer $TOKEN$&quot;</code></p>
-
-<aside class="notice">
-You must replace <code>$TOKEN$</code> with your personal API key.
-</aside>
-
-<h2 id="request-token">Request Token</h2>
-<pre class="highlight shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> -H <span class="s2">"Cache-Control: no-cache"</span> -d <span class="s1">'{
-  "client_id": "meowmeowmeow,
-  "client_secret": "weomweomweom",
-  "grant_type": "password",
-  "username": "test@vispera.co",
-  "password": "youraccountpassword",
-  "scope": "shark"
-}'</span> <span class="s2">"http://ocean.vispera.co/oauth/token"</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your client id and <code class="prettyprint">weomweomweom</code> with your client secret.</p>
-
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db7fd1b3561f448b8b488db4deebc710aa153ce136e3c251e91f3522b1208cb"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4c221f165d2ac5eddb3ce171b1e6d4ae0877111e47932862a745d50875d426ba"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shark"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1479907224</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://ocean.vispera.co/oauth/token</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
+<table><thead>
+<tr>
+<th>apiKey</th>
+<th><em>API Key</em></th>
+</tr>
+</thead><tbody>
+</tbody></table>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>oauth2</th>
+<th><em>OAuth 2.0</em></th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>apiKey</th>
+<th><em>API Key</em></th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<h1 id="projects">/PROJECTS</h1>
+
+<h2 id="get"><strong><em>GET</em></strong></h2>
+
+<p><strong>Summary:</strong> Project information</p>
+
+<p><strong>Description:</strong> Get project of projects information of currently authenticated user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">***GET*** /projects</code> </p>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>client_id</td>
-<td>Client ID that provided to you.</td>
+<td>200</td>
+<td>Successful Operation</td>
 </tr>
 <tr>
-<td>client_secret</td>
-<td>Client secret that provided to you.</td>
-</tr>
-<tr>
-<td>grant_type</td>
-<td>Use &ldquo;password&rdquo; to get token.</td>
-</tr>
-<tr>
-<td>username</td>
-<td>Username of your auditor account.</td>
-</tr>
-<tr>
-<td>password</td>
-<td>Password of your auditor account.</td>
-</tr>
-<tr>
-<td>scope</td>
-<td>Scope of your token, in this case it is &ldquo;shark&rdquo;</td>
+<td>401</td>
+<td>Unauthorized</td>
 </tr>
 </tbody></table>
 
-<h2 id="request-token-with-refresh-token">Request Token with Refresh Token</h2>
-<pre class="highlight shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> -H <span class="s2">"Cache-Control: no-cache"</span> -d <span class="s1">'{
-  "client_id": "meowmeowmeow,
-  "client_secret": "weomweomweom",
-  "grant_type": "refresh_token",
-  "refresh_token": "yourrefreshtoken"
-}'</span> <span class="s2">"http://ocean.vispera.co/oauth/token"</span>
-</code></pre>
+<h1 id="projects-projectid-visits">/PROJECTS/{PROJECTID}/VISITS</h1>
 
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your client id, <code class="prettyprint">weomweomweom</code> with your client secret <code class="prettyprint">yourrefreshtoken</code> with refresh token.</p>
+<h2 id="get"><strong><em>GET</em></strong></h2>
 
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db7fd1b3561f448b8b488db4deebc710aa153ce136e3c251e91f3522b1208cb"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4c221f165d2ac5eddb3ce171b1e6d4ae0877111e47932862a745d50875d426ba"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shark"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1479907224</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<p><strong>Summary:</strong> Get visits by project ID</p>
+
+<p><strong>Description:</strong> Returns list of reported visit UUIDs of given project</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://ocean.vispera.co/oauth/token</code></p>
+<p><code class="prettyprint">***GET*** /projects/{projectID}/visits</code> </p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<p><strong>Parameters</strong></p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>projectID</td>
+<td>path</td>
+<td>ID of the project</td>
+<td>Yes</td>
+<td>long</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>client_id</td>
-<td>Client ID that provided to you.</td>
+<td>200</td>
+<td>Successful Operation</td>
 </tr>
 <tr>
-<td>client_secret</td>
-<td>Client secret that provided to you.</td>
+<td>400</td>
+<td>Invalid ID supplied</td>
 </tr>
 <tr>
-<td>grant_type</td>
-<td>Use &ldquo;password&rdquo; to get token.</td>
+<td>401</td>
+<td>Unauthorized</td>
 </tr>
 <tr>
-<td>refresh_token</td>
-<td>Your refresh token.</td>
+<td>404</td>
+<td>Not found</td>
 </tr>
 </tbody></table>
 
-<h2 id="revoke-token">Revoke Token</h2>
-<pre class="highlight shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> -H <span class="s2">"Cache-Control: no-cache"</span> <span class="s1">'{
-    "token": "5db7fd1b3561f448b8b488db4deebc710aa153ce136e3c251e91f3522b1208cb"
-}'</span> <span class="s2">"http://localhost:3000/oauth/revoke"</span>
-</code></pre>
+<h1 id="projects-projectid-visits-visitid">/PROJECTS/{PROJECTID}/VISITS/{VISITID}</h1>
 
-<blockquote>
-<p>The above command does not return anything expect HTTP Status code 204. </p>
-</blockquote>
+<h2 id="get"><strong><em>GET</em></strong></h2>
+
+<p><strong>Summary:</strong> Get reports by visit and project ID</p>
+
+<p><strong>Description:</strong> Returns list of reports given visit and project</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://ocean.vispera.co/oauth/revoke</code></p>
+<p><code class="prettyprint">***GET*** /projects/{projectID}/visits/{visitID}</code> </p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<p><strong>Parameters</strong></p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>projectID</td>
+<td>path</td>
+<td>ID of the project</td>
+<td>Yes</td>
+<td>long</td>
+</tr>
+<tr>
+<td>visitID</td>
+<td>path</td>
+<td>ID of the visit</td>
+<td>Yes</td>
+<td>long</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
-<td>Token that you want to revoke.</td>
+<td>200</td>
+<td>Successful Operation</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Invalid ID supplied</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not found</td>
 </tr>
 </tbody></table>
 
-<h1 id="auditor">Auditor</h1>
+<!-- Converted with the swagger-to-slate https://github.com/lavkumarv/swagger-to-slate -->
 
-<p>Get logged auditor.</p>
-<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> 
--H <span class="s2">"Cache-Control: no-cache"</span> -H <span class="s2">"http://localhost:3000/api/shark/v1/auditors/me"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">479</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Snow"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@vispera.co"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://ocean.vispera.co/api/shark/v1/auditors/me</code></p>
-
-<h1 id="assignment">Assignment</h1>
-
-<h2 id="get-all-assignments">Get All Assignments</h2>
-<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/shark/v1/assignments"</span>
-</code></pre>
-
-<p>Get all assignments for logged in auditor.</p>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">630</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrefourSA_2016_altayçeşme"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA Altayçeşme 2016"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"stores_todo_codes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Carrefour001"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-08T12:35:13.483Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd8134e-20e3-4899-ac4c-2b28b13203ae"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"device_reports"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reference_image_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">899</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"survey_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"activity_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69763366-27d5-4aab-b903-b30fb2ca8cc5"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3de2916e-2833-4744-b08a-7275a90f05db"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"store_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carrefour001"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shelf"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"mosaic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"xxxsmall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xxxsmall_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"xxsmall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xxsmall_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"xsmall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xsmall_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/small_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/medium_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/large_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"xlarge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xlarge_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"xxlarge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xxlarge_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"xxxlarge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xxxlarge_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/a1835f7310.jpg"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">898</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"survey_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"activity_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69763366-27d5-4aab-b903-b30fb2ca8cc5"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image_set_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3de2916e-2833-4744-b08a-7275a90f05db"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"store_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carrefour001"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shelf"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"mosaic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"xxxsmall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xxxsmall_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"xxsmall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xxsmall_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"xsmall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xsmall_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/small_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/medium_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/large_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"xlarge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xlarge_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"xxlarge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xxlarge_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"xxxlarge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/xxxlarge_a1835f7310.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/image_set_report/mosaic/6392/a1835f7310.jpg"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"always"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"route"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">595</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"route_BNQT8Bxz"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrefourSA_2016_route"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA 2016 route"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-07T14:53:12.437Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"stores"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carrefour001"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA Altayçeşme"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carrefour001 CarrefourSA Altayçeşme İstanbul"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"store_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Market"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">" "</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"İstanbul"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_RF+0AdMP"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carrefour Altaycesme 2016"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA Altaycesme 2016"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"survey"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"survey_uFJZEbNW"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrefourSA_altaycesme_2016_survey"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA Altaycesme 2016 Survey"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hybrid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"can_send_actions"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"can_send_activities"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"visit_seal_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manuel"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"visit_seal_interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-12T09:00:00.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-17T09:00:00.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"activity_categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shpyalco"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA_Altaycesme_2016_shelf"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Raf"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"action_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"image_set_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shelf"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_image_set_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"product_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69763366-27d5-4aab-b903-b30fb2ca8cc5"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrefoursa_2016_food"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yiyecek"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fthixlbw"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA_Altaycesme_2016_cooler"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soğutucu"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"action_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"image_set_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cooler"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_image_set_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"product_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69763366-27d5-4aab-b903-b30fb2ca8cc5"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrefoursa_2016_food"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yiyecek"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kloqgjtz"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA_Altaycesme_2016_display"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teşhir"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"action_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"image_set_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"display"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_image_set_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"product_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69763366-27d5-4aab-b903-b30fb2ca8cc5"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrefoursa_2016_food"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yiyecek"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"can_device_receive_reports"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"internal_project_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd8134e-20e3-4899-ac4c-2b28b13203ae"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"can_select_reference_image_set"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"action_categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shpyalco"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA_Altaycesme_2016_shelf"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Raf"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"action_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"image_set_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shelf"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_image_set_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"product_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69763366-27d5-4aab-b903-b30fb2ca8cc5"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrefoursa_2016_food"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yiyecek"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fthixlbw"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA_Altaycesme_2016_cooler"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soğutucu"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"action_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"image_set_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cooler"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_image_set_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"product_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69763366-27d5-4aab-b903-b30fb2ca8cc5"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrefoursa_2016_food"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yiyecek"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kloqgjtz"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA_Altaycesme_2016_display"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teşhir"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"action_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"image_set_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"display"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_action_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"min_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"max_image_set_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"product_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69763366-27d5-4aab-b903-b30fb2ca8cc5"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrefoursa_2016_food"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yiyecek"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://ocean.vispera.co/api/shark/v1/assignments</code></p>
-
-<h2 id="get-specific-assignment">Get Specific Assignment</h2>
-
-<p>Get a specific assignment with ID.</p>
-<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> 
-<span class="s2">"http://localhost:3000/api/shark/v1/assignments/</span><span class="nv">$ID$/</span><span class="s2">stores/todo"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carrefour001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarrefourSA Altayçeşme"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carrefour001 CarrefourSA Altayçeşme İstanbul"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"store_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Market"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">" "</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"İstanbul"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://ocean.vispera.co/api/shark/v1/assignments/$ID$/stores/todo</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the assignment to retrieve</td>
-</tr>
-</tbody></table>
-
-<h1 id="data">Data</h1>
-
-<h2 id="get-data">Get Data</h2>
-<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/shark/v1/data/version"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"latest_update_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-08T12:35:13.483Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"resource_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assignments/630-20161108123513483653000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"min_version_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://localhost:3000/api/shark/v1/data/version</code></p>
-
-<h2 id="post-data">Post Data</h2>
-<pre class="highlight shell"><code>curl --KEMAL
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="s2">"KEMAL"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"Buralara"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"neler"</span><span class="err">,</span><span class="w"> </span><span class="nt">"gelicek"</span><span class="err">,</span><span class="w"> </span><span class="err">undefined}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://localhost:3000/api/shark/v1/data/version</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>KEMAL</td>
-<td>KEMAL.</td>
-</tr>
-<tr>
-<td>KEMAL</td>
-<td>KEMAL.</td>
-</tr>
-<tr>
-<td>KEMAL</td>
-<td>KEMAL.</td>
-</tr>
-</tbody></table>
-
-<h1 id="report">Report</h1>
-
-<h2 id="get-all-reports">Get All Reports</h2>
-<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/shark/v1/reports"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">6596</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"ImageSetReport"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"visit_id"</span><span class="p">:</span><span class="s2">"bf0ad8d1-c0d2-456f-bcaf-5cad2e01e62a"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"image_set_id"</span><span class="p">:</span><span class="s2">"26ccd17f-974a-489a-b6e6-f1880e108112"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="s2">"CarrefourSA Altayçeşme"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"image_set_type"</span><span class="p">:</span><span class="s2">"Shelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"http://ocean.vispera.co/embedded/reports/6596"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-11-23T13:07:21.494Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">6597</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"VisitReport"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"visit_id"</span><span class="p">:</span><span class="s2">"bf0ad8d1-c0d2-456f-bcaf-5cad2e01e62a"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"image_set_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"store_name"</span><span class="p">:</span><span class="s2">"CarrefourSA Altayçeşme"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"image_set_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"http://ocean.vispera.co/embedded/reports/6597"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-11-23T13:07:39.046Z"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all reports.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://localhost:3000/api/shark/v1/reports</code></p>
-
-<h1 id="message">Message</h1>
-
-<h2 id="get-all-messages">Get All Messages</h2>
-<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> <span class="s2">"http://localhost:3000/api/shark/v1/messages"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"ImageSetReport"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"content"</span><span class="p">:</span><span class="s2">"ImageSetReport"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-11-23T13:07:21.494Z"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all messages.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://localhost:3000/api/shark/v1/messages</code></p>
-
-<h1 id="image-service">Image Service</h1>
-<pre class="highlight shell"><code>curl -X PATCH -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> -H <span class="s2">"Content-Type: multipart/form-data"</span> 
--F <span class="s2">"file=@file.jpg"</span> <span class="s2">"http://localhost:3000/api/shark/v1/images/</span><span class="nv">$IMAGE_ID</span><span class="s2">$"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command does not return anything expect HTTP Status code 204. </p>
-</blockquote>
-
-<p>Update an image.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">PATCH http://localhost:3000/api/shark/v1/images/$IMAGE_ID$</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<p>Multipart form-data</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>file</td>
-<td>New image file.</td>
-</tr>
-</tbody></table>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>IMAGE_ID</td>
-<td>The ID of the image to change.</td>
-</tr>
-</tbody></table>
-
-<h1 id="answer-service">Answer Service</h1>
-<pre class="highlight shell"><code>curl -X PATCH -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> -H <span class="s2">"Content-Type: multipart/form-data"</span> 
--F <span class="s2">"file=@file.jpg|.mp4"</span> <span class="s2">"http://localhost:3000/api/shark/v1/answers/</span><span class="nv">$ANSWER_ID</span><span class="s2">$"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command does not return anything expect HTTP Status code 204. </p>
-</blockquote>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">PATCH http://localhost:3000/api/shark/v1/answers/$ANSWER_ID$</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<p>Multipart form-data</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>file</td>
-<td>New image or video file.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Please note that file can be image or video.
-</aside>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ANSWER_ID</td>
-<td>The ID of the image or video to change.</td>
-</tr>
-</tbody></table>
-
-<h1 id="gps-log-service">GPS Log Service</h1>
-<pre class="highlight shell"><code>curl -X POST -H <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">$"</span> -F <span class="s2">"latitude=123.1"</span> -F <span class="s2">"longitude=123.1"</span> 
--F <span class="s2">"provider=satellite"</span> -F <span class="s2">"satellite_count=1"</span> -F <span class="s2">"recorded_at=2016-11-23T13:07:21.494Z"</span> 
-<span class="s2">"http://localhost:3000/api/shark/v1/gps_logs"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command does not return anything expect HTTP Status code 201. </p>
-</blockquote>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://localhost:3000/api/shark/v1/gps_logs</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<p>Multipart form-data</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>latitude</td>
-<td>Latitude of GPS coordinate.</td>
-</tr>
-<tr>
-<td>longitude</td>
-<td>Longitude of GPS coordinate.</td>
-</tr>
-<tr>
-<td>provider</td>
-<td>One of [satellite, cellular, wifi].</td>
-</tr>
-<tr>
-<td>satellite_count</td>
-<td>number of satellite.</td>
-</tr>
-<tr>
-<td>recorded_at</td>
-<td>Recored date and time of this log.</td>
-</tr>
-</tbody></table>
-
-<h1 id="test">Test</h1>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-
-          
           <h1 id="errors">Errors</h1>
 
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
